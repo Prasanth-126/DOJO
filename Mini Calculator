@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>Dojo Calculator</title>
+
+    <!-- Dojo Claro Theme -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dijit/themes/claro/claro.css">
+</head>
+
+<body class="claro" style="text-align:center">
+
+    <!-- Dojo Loader -->
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.10.4/dojo/dojo.js"
+            data-dojo-config="async: true, parseOnLoad: true"></script>
+
+    <h2>
+        Welcome to the <span id="dojo" style="color:red; font-weight:bold;">DOJO</span> Calculator...
+    </h2>
+
+    <br>
+
+    Enter the First Value:
+    <input id="a" type="number" placeholder="Enter first number"><br><br>
+
+    Enter the Second Value:
+    <input id="b" type="number" placeholder="Enter second number"><br><br>
+
+    <!-- Dijit Buttons -->
+    <button id="addBtn" data-dojo-type="dijit/form/Button">Add</button>
+    <button id="subBtn" data-dojo-type="dijit/form/Button">Subtract</button>
+    <button id="mulBtn" data-dojo-type="dijit/form/Button">Multiply</button>
+    <button id="divBtn" data-dojo-type="dijit/form/Button">Divide</button>
+
+    <br><br><br>
+
+    <div id="result" style="font-size:20px; font-weight:bold;"></div>
+
+    <script>
+        require(["dojo/dom", "dojo/on"], function(dom, on){
+
+            function getValues() {
+                var x = parseFloat(dom.byId("a").value);
+                var y = parseFloat(dom.byId("b").value);
+                return { x: x, y: y };
+            }
+
+            on(dom.byId("addBtn"), "click", function(){
+                var v = getValues();
+                dom.byId("result").innerHTML = "Sum = " + (v.x + v.y);
+            });
+
+            on(dom.byId("subBtn"), "click", function(){
+                var v = getValues();
+                dom.byId("result").innerHTML = "Difference = " + (v.x - v.y);
+            });
+
+            on(dom.byId("mulBtn"), "click", function(){
+                var v = getValues();
+                dom.byId("result").innerHTML = "Product = " + (v.x * v.y);
+            });
+
+            on(dom.byId("divBtn"), "click", function(){
+                var v = getValues();
+                if (v.y === 0) {
+                    dom.byId("result").innerHTML = "Cannot divide by zero";
+                } else {
+                    dom.byId("result").innerHTML = "Division = " + (v.x / v.y);
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
