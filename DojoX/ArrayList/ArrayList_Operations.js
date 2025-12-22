@@ -9,6 +9,9 @@ require(["dojox/collections/ArrayList"], function(ArrayList) {
     list.add("B");
     console.log("After add:", list.toArray());
 
+     // item(i) - access element by index
+    console.log("Item at index 1:", list.item(1));
+
     // Add multiple elements
     list.addRange(["C", "D"]);
     console.log("After addRange:", list.toArray());
@@ -41,9 +44,6 @@ require(["dojox/collections/ArrayList"], function(ArrayList) {
     list.setByIndex(1, "ZZ");
     console.log("After setByIndex:", list.toArray());
 
-
-    // item(i) - access element by index
-    console.log("Item at index 1:", list.item(1));
 
     // getIterator() - manual iteration
     var iterator = list.getIterator();
