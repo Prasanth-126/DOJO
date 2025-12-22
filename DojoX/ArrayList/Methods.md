@@ -1,6 +1,4 @@
 
-# dojoX ArrayList Methods with Examples and Explanations
-
 `dojox.collections.ArrayList` is an index-based resizable collection of elements.
 
 ---
@@ -28,8 +26,7 @@ console.log(list.toArray()); // ["A","B"]
 ```
 
 **Explanation:**
-`add()` appends the given element to the **end of the list**.
-Use it when you want to add elements one by one.
+Appends the given element to the **end of the list**. Useful for adding items one by one.
 
 ---
 
@@ -41,8 +38,7 @@ console.log(list.toArray()); // ["A","B","C","D"]
 ```
 
 **Explanation:**
-`addRange()` appends multiple elements from an array or another collection at once.
-Useful for bulk insertion.
+Adds multiple elements from an array or collection at once.
 
 ---
 
@@ -54,8 +50,7 @@ console.log(cloneList.toArray()); // ["A","B","C","D"]
 ```
 
 **Explanation:**
-`clone()` creates a **separate copy** of the ArrayList.
-Changes to the original list won’t affect the cloned list.
+Creates a **separate copy** of the ArrayList. Modifying the original list does not affect the clone.
 
 ---
 
@@ -67,8 +62,7 @@ console.log(list.contains("Z")); // false
 ```
 
 **Explanation:**
-`contains()` checks if a specific element exists in the list.
-Returns `true` if found, `false` otherwise.
+Returns `true` if the element exists in the list, otherwise `false`.
 
 ---
 
@@ -80,12 +74,11 @@ console.log(list.indexOf("Z")); // -1
 ```
 
 **Explanation:**
-`indexOf()` returns the **0-based index** of the element in the list.
-Returns `-1` if the element is not present.
+Returns the **0-based index** of an element. Returns `-1` if the element is not found.
 
 ---
 
-## 7️⃣ `insert(idx, obj)` – Insert at a specific index
+## 7️⃣ `insert(idx, obj)` – Insert at index
 
 ```js
 list.insert(2, "X");
@@ -93,7 +86,7 @@ console.log(list.toArray()); // ["A","B","X","C","D"]
 ```
 
 **Explanation:**
-`insert()` places the element at the given index, shifting other elements to the right.
+Inserts an element at the given index, shifting other elements to the right.
 
 ---
 
@@ -105,7 +98,7 @@ console.log(list.toArray()); // ["A","X","C","D"]
 ```
 
 **Explanation:**
-`remove()` deletes the **first occurrence** of the specified element.
+Removes the **first occurrence** of the given element.
 
 ---
 
@@ -117,7 +110,7 @@ console.log(list.toArray()); // ["X","C","D"]
 ```
 
 **Explanation:**
-`removeAt()` deletes the element at the specified index.
+Removes the element at the specified index.
 
 ---
 
@@ -129,7 +122,7 @@ console.log(list.toArray()); // ["D","C","X"]
 ```
 
 **Explanation:**
-`reverse()` flips the order of elements in the list.
+Reverses the order of elements in the list.
 
 ---
 
@@ -141,8 +134,7 @@ console.log(list.toArray()); // ["C","D","X"]
 ```
 
 **Explanation:**
-`sort()` orders the elements in **ascending order**.
-Works with strings and numbers.
+Sorts elements in ascending order (works with strings and numbers).
 
 ---
 
@@ -154,7 +146,7 @@ console.log(list.toArray()); // ["C","ZZ","X"]
 ```
 
 **Explanation:**
-`setByIndex()` updates the element at the given index without changing the size of the list.
+Replaces the element at a specific index without changing the size of the list.
 
 ---
 
@@ -166,24 +158,90 @@ console.log(arr); // ["C","ZZ","X"]
 ```
 
 **Explanation:**
-`toArray()` returns a **JavaScript array** containing all elements from the ArrayList.
-Useful for normal JS array operations.
+Returns a **JavaScript array** with all elements from the ArrayList.
+
+---
+
+## 1️⃣4️⃣ `forEach(func, scope)` – Iterate over elements
+
+```js
+list.forEach(function(item, index){
+    console.log(index, item);
+});
+```
+
+**Output:**
+
+```
+0 "C"
+1 "ZZ"
+2 "X"
+```
+
+**Explanation:**
+Calls the given function for **every element**.
+
+* `item` → current element
+* `index` → position in list
+* `scope` → optional `this` context
+
+---
+
+## 1️⃣5️⃣ `getIterator()` – Manual iteration
+
+```js
+var iterator = list.getIterator();
+while(iterator.hasNext()){
+    console.log(iterator.getNext());
+}
+```
+
+**Output:**
+
+```
+"C"
+"ZZ"
+"X"
+```
+
+**Explanation:**
+Returns an **Iterator object**.
+
+* `hasNext()` → checks if more elements exist
+* `getNext()` → retrieves next element
+  Useful for **custom iteration logic**.
+
+---
+
+## 1️⃣6️⃣ `item(i)` – Get element by index
+
+```js
+console.log(list.item(1)); // "ZZ"
+```
+
+**Explanation:**
+Returns the element at a **specific index**.
+Returns `undefined` if index is out of bounds.
 
 ---
 
 ## ✅ Summary Table
 
-| Method                | Example                    | What it Does                |
-| --------------------- | -------------------------- | --------------------------- |
-| `add(obj)`            | `list.add("A")`            | Adds element to the end     |
-| `addRange(array)`     | `list.addRange(["C","D"])` | Adds multiple elements      |
-| `clone()`             | `list.clone()`             | Creates a copy of the list  |
-| `contains(obj)`       | `list.contains("B")`       | Checks if element exists    |
-| `indexOf(obj)`        | `list.indexOf("C")`        | Returns index of element    |
-| `insert(idx,obj)`     | `list.insert(2,"X")`       | Inserts element at index    |
-| `remove(obj)`         | `list.remove("B")`         | Removes first occurrence    |
-| `removeAt(idx)`       | `list.removeAt(0)`         | Removes element at index    |
-| `reverse()`           | `list.reverse()`           | Reverses the list           |
-| `sort()`              | `list.sort()`              | Sorts elements ascending    |
-| `setByIndex(idx,obj)` | `list.setByIndex(1,"ZZ")`  | Replaces element at index   |
-| `toArray()`           | `list.toArray()`           | Converts to native JS array |
+| Method                 | Example                                                                     | Description                   |
+| ---------------------- | --------------------------------------------------------------------------- | ----------------------------- |
+| `add(obj)`             | `list.add("A")`                                                             | Adds element to the end       |
+| `addRange(array)`      | `list.addRange(["C","D"])`                                                  | Adds multiple elements        |
+| `clone()`              | `list.clone()`                                                              | Copies the list               |
+| `contains(obj)`        | `list.contains("B")`                                                        | Checks if element exists      |
+| `indexOf(obj)`         | `list.indexOf("C")`                                                         | Returns element index         |
+| `insert(idx,obj)`      | `list.insert(2,"X")`                                                        | Inserts element at index      |
+| `remove(obj)`          | `list.remove("B")`                                                          | Removes first occurrence      |
+| `removeAt(idx)`        | `list.removeAt(0)`                                                          | Removes element at index      |
+| `reverse()`            | `list.reverse()`                                                            | Reverses list                 |
+| `sort()`               | `list.sort()`                                                               | Sorts ascending               |
+| `setByIndex(idx,obj)`  | `list.setByIndex(1,"ZZ")`                                                   | Replaces element at index     |
+| `toArray()`            | `list.toArray()`                                                            | Converts to JS array          |
+| `forEach(func, scope)` | `list.forEach((item,i)=>console.log(i,item))`                               | Iterates through elements     |
+| `getIterator()`        | `var it=list.getIterator(); while(it.hasNext()) console.log(it.getNext());` | Manual iteration              |
+| `item(i)`              | `list.item(1)`                                                              | Get element at specific index |
+
