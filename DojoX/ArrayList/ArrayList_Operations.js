@@ -1,3 +1,4 @@
+
 require(["dojox/collections/ArrayList"], function(ArrayList) {
 
     var list = new ArrayList();
@@ -48,8 +49,8 @@ require(["dojox/collections/ArrayList"], function(ArrayList) {
     // getIterator() - manual iteration
     var iterator = list.getIterator();
     console.log("Iterating with getIterator():");
-    while(iterator.hasNext()){
-        console.log(iterator.getNext());
+    while(iterator.atEnd()){
+        console.log(iterator.get());
     }
 
     // forEach(func, scope) - iterate with function
