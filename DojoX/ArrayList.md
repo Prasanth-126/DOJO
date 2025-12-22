@@ -10,9 +10,10 @@
 
 <h2>dojoX ArrayList Practice (Open Console)</h2>
 
-<script src="Chat.js">
+<script src="ArrayList_Operations.js">
 
 </script>
 
 </body>
 </html>
+
