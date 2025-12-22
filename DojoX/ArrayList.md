@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h2>dojoX ArrayList Practice (Open Console)</h2>
+<h2>dojoX ArrayList Practice......</h2>
 
 <script src="ArrayList_Operations.js">
 
@@ -16,4 +16,5 @@
 
 </body>
 </html>
+
 
