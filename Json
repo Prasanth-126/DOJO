@@ -3,15 +3,16 @@
 <head>
     <title>Dojo Ajax Without Window</title>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.16.3/dojo/dojo.js"></script>
+   <!--  <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.16.3/dojo/dojo.js"></script> -->
+    <script src="/DOJO/dojo-release-1.17.3/dojo/dojo.js"></script>
 
     <script>
         require([
             "dojo/dom",
             "dojo/on",
-            "dojo/request/xhr",
+            "dojo/request",
             "dojo/domReady!"
-        ], function (dom, on, xhr) {
+        ], function (dom, on, request) {
 
             var getBtn = dom.byId("getBtn");
             var postBtn = dom.byId("postBtn");
@@ -19,7 +20,7 @@
             on(getBtn, "click", function () {
                 var name = dom.byId("name").value;
 
-                xhr.get("http://localhost:8080/YourProjectName/dojoServlet", {
+                request.get("http://localhost:8082/Dojo_Backend/dojoServlet", {
                     query: { name: name },
                     handleAs: "text"
                 }).then(function (response) {
@@ -32,7 +33,7 @@
             on(postBtn, "click", function () {
                 var name = dom.byId("name").value;
 
-                xhr.post("http://localhost:8080/YourProjectName/dojoServlet", {
+                request.post("http://localhost:8082/Dojo_Backend/dojoServlet", {
                     data: { name: name },
                     handleAs: "text"
                 }).then(function (response) {
