@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dojo Ajax Without Window</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.16.3/dojo/dojo.js"></script>
+
+    <script>
+        require([
+            "dojo/dom",
+            "dojo/on",
+            "dojo/request/xhr",
+            "dojo/domReady!"
+        ], function (dom, on, xhr) {
+
+            var getBtn = dom.byId("getBtn");
+            var postBtn = dom.byId("postBtn");
+
+            on(getBtn, "click", function () {
+                var name = dom.byId("name").value;
+
+                xhr.get("http://localhost:8080/YourProjectName/dojoServlet", {
+                    query: { name: name },
+                    handleAs: "text"
+                }).then(function (response) {
+                    dom.byId("result").innerHTML = response;
+                }, function (err) {
+                    console.error(err);
+                });
+            });
+
+            on(postBtn, "click", function () {
+                var name = dom.byId("name").value;
+
+                xhr.post("http://localhost:8080/YourProjectName/dojoServlet", {
+                    data: { name: name },
+                    handleAs: "text"
+                }).then(function (response) {
+                    dom.byId("result").innerHTML = response;
+                }, function (err) {
+                    console.error(err);
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h2>Dojo Ajax (No Window)</h2>
+
+    <input type="text" id="name" placeholder="Enter Name">
+    <br><br>
+
+    <button id="getBtn">GET Method</button>
+    <button id="postBtn">POST Method</button>
+
+    <p id="result"></p>
+</body>
+</html>
