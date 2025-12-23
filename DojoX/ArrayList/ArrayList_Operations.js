@@ -49,7 +49,7 @@ require(["dojox/collections/ArrayList"], function(ArrayList) {
     // getIterator() - manual iteration
     var iterator = list.getIterator();
     console.log("Iterating with getIterator():");
-    while(iterator.atEnd()){
+    while(!iterator.atEnd()){
         console.log(iterator.get());
     }
 
