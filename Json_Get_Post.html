@@ -22,9 +22,10 @@
 
                 request.get("http://localhost:8082/Dojo_Backend/dojoServlet", {
                     query: { name: name },
-                    handleAs: "text"
+                    handleAs: "json"
                 }).then(function (response) {
-                    dom.byId("result").innerHTML = response;
+                    dom.byId("result").innerHTML = JSON.stringify(response);
+
                 }, function (err) {
                     console.error(err);
                 });
@@ -35,9 +36,10 @@
 
                 request.post("http://localhost:8082/Dojo_Backend/dojoServlet", {
                     data: { name: name },
-                    handleAs: "text"
+                    handleAs: "json"
                 }).then(function (response) {
-                    dom.byId("result").innerHTML = response;
+                  dom.byId("result").innerHTML = JSON.stringify(response);
+
                 }, function (err) {
                     console.error(err);
                 });
