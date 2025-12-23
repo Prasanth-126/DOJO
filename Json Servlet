@@ -1,0 +1,47 @@
+package com.ngs.dojo;
+
+import java.io.IOException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
+@WebServlet("/dojoServlet")
+public class Json_Get_Post extends HttpServlet {
+
+	private void setCORSHeaders(HttpServletResponse response) {
+		response.setHeader("Access-Control-Allow-Origin", "*");
+		response.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization, X-Requested-With");
+	}
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String name = request.getParameter("name").trim();
+
+		setCORSHeaders(response);
+		response.setContentType("application/json");
+		// Proper JSON format
+		String jsonResponse = "{ \"method\": \"GET\", \"message\": \"Hello " + name + "\" }";
+		response.getWriter().print(jsonResponse);
+
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		String name = request.getParameter("name").trim();
+
+		setCORSHeaders(response);
+		response.setContentType("application/json");
+
+		// Proper JSON format
+		String jsonResponse = "{ \"method\": \"POST\", \"message\": \"Hello " + name + "\" }";
+		response.getWriter().print(jsonResponse);
+	}
+
+	@Override
+	protected void doOptions(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		setCORSHeaders(response);
+		response.setStatus(HttpServletResponse.SC_OK);
+	}
+}
