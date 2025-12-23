@@ -1,0 +1,25 @@
+@WebServlet("/dojoServlet")
+public class MyServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+        String name = request.getParameter("name");
+
+        response.setContentType("text/plain");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        response.getWriter().print("GET Response: Hello " + name);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+        String name = request.getParameter("name");
+
+        response.setContentType("text/plain");
+        response.setHeader("Access-Control-Allow-Origin", "*");
+
+        response.getWriter().print("POST Response: Hello " + name);
+    }
+}
