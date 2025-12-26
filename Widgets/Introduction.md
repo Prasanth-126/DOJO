@@ -5,8 +5,6 @@
 In **Dojo**, a **widget** is a reusable **UI component** that controls both **presentation (HTML)** and **behavior (JavaScript)**.  
 Widgets help build rich, interactive web applications in a structured and modular way.
 
----
-
 ## ✨ Key Features of Dojo Widgets
 - Reusable UI components  
 - Encapsulate HTML, CSS, and JavaScript  
@@ -37,16 +35,16 @@ Ready-made UI components provided by Dojo.
 - `dijit/Menu`  
 
 **Example:**
-```html
+
 <button data-dojo-type="dijit/form/Button">
   Submit
 </button>
 
-### 2. Custom Widgets
+### 2.Custom Widgets
 Developers can create reusable custom widgets in Dojo.
 
 **Example:**
-```javascript
+###Custom
 define([
   "dojo/_base/declare",
   "dijit/_WidgetBase",
@@ -68,7 +66,7 @@ Used to structure and organize page layout.
 - `dijit/layout/AccordionContainer`
 
 **Example:**
-```html
+
 <div data-dojo-type="dijit/layout/BorderContainer" style="height:300px;">
   <div data-dojo-type="dijit/layout/ContentPane" region="center">
     Center Content
@@ -88,7 +86,7 @@ Used to collect and validate user input.
 - `DateTextBox`
 
 **Example:**
-```html
+
 <input data-dojo-type="dijit/form/TextBox" placeholder="Enter name">
 
 
@@ -103,7 +101,7 @@ Every Dojo widget follows a lifecycle:
 6. destroy  
 
 **Example:**
-```javascript
+
 postCreate: function(){
   this.inherited(arguments);
   console.log("Widget created");
@@ -115,12 +113,12 @@ postCreate: function(){
 ## ⚖️ Declarative vs Programmatic Widgets
 
 ### Declarative (HTML-based)
-```html
+
 <input data-dojo-type="dijit/form/TextBox">
-```
+
 
 ### Programmatic (JavaScript-based)
-```javascript
+
 require(["dijit/form/TextBox"], function(TextBox){
   var tb = new TextBox({}, "textNode");
   tb.startup();
@@ -136,7 +134,6 @@ Dojo widgets are widely used in **IBM FileNet ICN** for:
 - Workflow UI  
 
 **Example:**
-```javascript
 define([
   "dojo/_base/declare",
   "ecm/widget/dialog/BaseDialog"
@@ -152,4 +149,3 @@ define([
 - Built-in accessibility  
 - Clean separation of concerns  
 - Ideal for enterprise applications  
-```
